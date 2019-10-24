@@ -104,4 +104,4 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-input_images
+data/input_images

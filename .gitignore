@@ -105,3 +105,13 @@ venv.bak/
 .mypy_cache/
 
 data/input_images
+*.jpg
+*.zip
+
+data/output_images
+*.jpg
+*.mp4
+*.avi
+
+
+*.h5

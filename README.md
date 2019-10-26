@@ -15,3 +15,13 @@ Es una variación de un perceptrón multicapa.  Y es muy efectiva para las tarea
 
 - **OpenCV**  para el procesamiento de imágenes
 - **Keras (Tensorflow)** para la creación del modelo de la CNN
+
+## Siguientes pasos
+ Porque  queremos seguir con este proyecto.
+ Los siguientes objetivos son los siguientes:
+-  Densificar el dataset de imágenes mediante captura.
+-  Mejor procesamiento de las imágenes.
+-  Mayor definición en las clases centrándonos en texturas.
+-  Continuo estudio y mejora de la topología de la red neuronal.
+-  Generación de una interfaz gráfica que permita la accesibilidad al producto.
+-  Generación de un equipo de trabajo (en proceso) sólido e interesado en el cambio del paradigma del consumo, generación y reciclaje de residuos.

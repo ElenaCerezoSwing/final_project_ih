@@ -62,6 +62,7 @@ A lo largo de este proyecto hemos observado la repercusión de los siguientes fa
 ## Siguientes pasos
  Porque  queremos seguir con este proyecto.
  Los siguientes objetivos son los siguientes:
+-  Crear el pipeline del proyecto bien.
 -  Densificar el dataset de imágenes mediante captura.
 -  Mejor procesamiento de las imágenes.
 -  Mayor definición en las clases centrándonos en texturas.

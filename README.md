@@ -68,3 +68,5 @@ A lo largo de este proyecto hemos observado la repercusión de los siguientes fa
 -  Continuo estudio y mejora de la topología de la red neuronal.
 -  Generación de una interfaz gráfica que permita la accesibilidad al producto.
 -  Generación de un equipo de trabajo (en proceso) sólido e interesado en el cambio del paradigma del consumo, generación y reciclaje de residuos.
+
+![](https://es.jarofquotes.com/citas/159602.jpg)

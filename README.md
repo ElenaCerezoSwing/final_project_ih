@@ -33,6 +33,7 @@ Generar una red neuronal que permita la clasificación de imágenes de residuos 
 
 ## Conclusiones
 
+A lo largo de este proyecto hemos observado la repercusión de los siguientes factores y parámetros:
 
 - La importancia del procesamiento de las imágenes:
 	- 		 redimensionado

@@ -31,6 +31,13 @@ Generar una red neuronal que permita la clasificación de imágenes de residuos 
 
 - Generación de la topología de la red neuronal.
 
+
+## Tecnología aplicada
+ Para la consecución de este proyecto se ha utilizado:
+
+- **OpenCV**  para el procesamiento de imágenes
+- **Keras (Tensorflow)** para la creación del modelo de la CNN
+
 ## Conclusiones
 
 A lo largo de este proyecto hemos observado la repercusión de los siguientes factores y parámetros:
@@ -51,11 +58,6 @@ A lo largo de este proyecto hemos observado la repercusión de los siguientes fa
 	- 		permite enfocar el estudio a la modificación de la topología o al tratamiento de los datos
 			
 
-## Tecnología aplicada
- Para la consecución de este proyecto se ha utilizado:
-
-- **OpenCV**  para el procesamiento de imágenes
-- **Keras (Tensorflow)** para la creación del modelo de la CNN
 
 
 

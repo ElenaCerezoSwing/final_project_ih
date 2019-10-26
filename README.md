@@ -70,3 +70,5 @@ A lo largo de este proyecto hemos observado la repercusión de los siguientes fa
 -  Generación de un equipo de trabajo (en proceso) sólido e interesado en el cambio del paradigma del consumo, generación y reciclaje de residuos.
 
 ![](https://es.jarofquotes.com/citas/159602.jpg)
+
+En este [enlace](https://www.canva.com/design/DADpHCyod9E/3-etmFyQdnA2USJKbKmM3A/view?utm_content=DADpHCyod9E&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink#1) se encuentra la presentación del proyecto. Muchas gracias

@@ -1,17 +1,20 @@
-
-
-import cv2
-import numpy as np
+from __future__ import print_function
+import keras
+from keras.datasets import mnist
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Flatten
+from keras.layers import Conv2D, MaxPooling2D, BatchNormalization
+from keras import backend as K
+import re
 import os
-from extracting_frames import get_image
-from photo_classifier import get_photo_classification
-from garbage_solution import get_garbage_solution
+import cv2
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from PIL import Image
 
 def main():
-    get_image()
-    waste_type = get_photo_classification()
-    solution = get_garbage_solution(waste_type)
-    print(solution)
+
 
 
 if __name__ == '__main__':

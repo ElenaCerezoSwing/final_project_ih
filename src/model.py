@@ -1,56 +1,66 @@
+from __future__ import print_function
+import keras
+from keras.datasets import mnist
 from keras.models import Sequential
-from keras.layers import ConV2D, MaxPooling2D
-from keras.layers import Activation, Dropout, Flatten, Dense
-
-model = Sequential()
-
-# first we make a model that outputs 3D feature maps (height, width and features)
-model.add(ConV2D(32, (3,3), input_shape=(3, 150, 150)))
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2,2)))
-
-model.add(ConV2D(32, (3,3)))
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2,2)))
-
-model.add(ConV2D(32, (3,3)))
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2,2)))
-
-# the we convert 3D feature maps to 1D feature vectors
-model.add(Flatten())
-model.add(Dense(64))
-model.add(Activation('relu'))
-model.add(Dropout(0.5))
-model.add(Dense(1))
-model.add(Activation('sigmoid'))
-
-model.compile(loss='binary_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
-
-# now, we prepare our data
-
-batch_size = 16
-# augmentation configuration for training data
-train_datagen = ImageDataGenerator (resclae=1./255, shear_range=0.2, zoom_range=0.2, horizontal_flip=True)
-
-# augmentation configuration for testing fata (only rescaling)
-test_datagen = ImageDataGenerator(rescale=1./255)
-
-# this part of the code is a generator that read pictures found in subfolders of 'data/input_images',
-# and indefinetely generate batches of augmented image data
-
-train_generator = train_datagen.flow_from_directory('data/input_images', target_size=(150, 150), batch_size=batch_size, class_mode='binary')
-
-# and the same for validation
-valdation_generator = train_datagen.flow_from_directory('data/validation', target_size=(150, 150), batch_size=batch_size, class_mode='binary')
+from keras.layers import Dense, Dropout, Flatten
+from keras.layers import Conv2D, MaxPooling2D
+from keras import backend as K
+import sklearn
+from sklearn.model_selection import train_test_split
+from get_x_y import get_images_and_wastes
+from train_tets_split import get_train_test_split
+import numpy as np
+import pandas as pd
 
 
-model.fit_generator(
-    train_generator,
-    steps_per_epoch=2000 // batch_size,
-    epochs=50,
-    validation_data=valdation_generator,
-    validation_steps=800 // batch_size)
-model.save_weights('first_try.h5')
+def train_model():
+
+    # get x and y (images and wastes)
+    images, wastes = get_images_and_wastes()
+
+    x = np.array(images)
+    y = np.array(wastes)
+
+    # train-test split
+    X_train, X_test, y_train, y_test = get_train_test_split(x, y)
+
+    # types cast, from uint-8 to unit32
+    X_train = X_train.astype('float32')
+    X_test = X_test.astype('float32')
+
+    # normalize
+    X_train /= 255
+    X_test /= 255
+
+    # project constant
+    num_classes = 6
+
+    model = Sequential()
+    model.add(Conv2D(32, kernel_size=(3, 3),activation='relu', input_shape=(x.shape[1:])))
+    model.add(Conv2D(64, (3, 3), activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Dropout(0.25))
+    model.add(Flatten())
+    model.add(Dense(128, activation='relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(num_classes, activation='softmax'))
+    model.compile(loss=keras.losses.categorical_crossentropy,optimizer=keras.optimizers.Adadelta(), metrics=['accuracy'])
+
+    batch_size = 20
+    epochs = 10
+    model.fit(X_train, y_train, batch_size=batch_size, epochs=epochs, verbose=1, validation_data=(X_test,  y_test))
+
+    print(model.summary())
+
+    score = model.evaluate(X_train, y_train, verbose=0)
+    print('Test loss:', score[0])
+    print('Test accuracy:', score[1])
+
+    score = model.evaluate(X_test, y_test, verbose=0)
+    print('Test loss:', score[0])
+    print('Test accuracy:', score[1])
+
+    model.save('good_model.h5')
+
 
 
